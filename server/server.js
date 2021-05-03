@@ -3,9 +3,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 var config = require('./config');
 mongoose.Promise = global.Promise;
+require('dotenv').config()
 //let conn = 'mongodb://admin:Fuck~root1@ds125402.mlab.com:25402/endeavourkiet_19';
-const uri = config.mongoUrl;
-const connect = mongoose.connect(uri,{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+
+const connect = mongoose.connect(process.env.URL,{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}).then(console.log('DB succesfully connected'));
 
 connect.then((db) => {
     console.log("Connected correctly to database");
@@ -28,7 +29,7 @@ const participant = require('../routes/participant');
 
 
 const store = new MongoDBStore({
-  url: uri,
+  url: process.env.URL,
   ttl: 8*60*1000,
   collection: "session"
 });
