@@ -65,7 +65,7 @@ app.use(function(req, res, next) {
   })
 app.use('/', main);
 app.use('/admin', admin);
-app.user("/api", api);
+app.use("/api", api);
 //app.use('/admin', quiz);
 //app.use('/admin', event);
 app.use('/participant', participant);
