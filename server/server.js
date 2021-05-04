@@ -1,4 +1,4 @@
-
+//jshint esversion: 8
 const express = require('express');
 const mongoose = require('mongoose');
 var config = require('./config');
@@ -25,6 +25,7 @@ const cookieParser = require('cookie-parser')
 //route in use
 const admin = require('../routes/admin');
 const main = require('../routes/default');
+const api = require('../routes/api');
 const participant = require('../routes/participant');
 
 
@@ -64,6 +65,7 @@ app.use(function(req, res, next) {
   })
 app.use('/', main);
 app.use('/admin', admin);
+app.user("/api", api);
 //app.use('/admin', quiz);
 //app.use('/admin', event);
 app.use('/participant', participant);
